@@ -12,7 +12,7 @@ components:
     image:
       imageName: single-nodejs-app:latest
       dockerfile:
-        uri: docker/Dockerfile
+        uri: fail
         buildContext: .
         rootRequired: false
   - name: outerloop-deploy
