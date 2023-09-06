@@ -12,7 +12,7 @@ jobs:
     name: Delete unused branches
     steps:
       - name: Delete unused branches
-        uses: drew-dectech/github-action-inactive-branches@v1
+        uses: drew-dectech/github-action-inactive-branches@1.2.1
         id: deleted_branches
         with:
           github_token: ${{ github.token }}
