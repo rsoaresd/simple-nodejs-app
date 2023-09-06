@@ -1,0 +1,24 @@
+name: Delete abandoned branches
+
+on:
+  schedule:
+    - cron: "*/2 * * * *"
+    
+  workflow_dispatch:
+
+jobs:
+  cleanup_old_branches:
+    runs-on: ubuntu-latest
+    name: Delete unused branches
+    steps:
+      - name: Delete unused branches
+        uses: drew-dectech/github-action-inactive-branches@v1
+        id: deleted_branches
+        with:
+          github_token: ${{ github.token }}
+          last_commit_age_days: 60
+          dry_run: no
+          prefixes_to_delete: appstudio-simple-nodejs
+
+      - name: Get output
+        run: "echo 'Deleted branches: ${{ steps.deleted_branches.outputs.deleted_branches }}'"
